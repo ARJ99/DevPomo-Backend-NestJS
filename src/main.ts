@@ -8,12 +8,14 @@ async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule);
 
+    app.setGlobalPrefix('api');
     app.useGlobalPipes(
       new ValidationPipe({
         whitelist: true,
         forbidNonWhitelisted: true,
       }),
     );
+    
 
     // app.enableCors(); // enable when the Next.js frontend starts calling the API
 
