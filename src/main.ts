@@ -15,11 +15,13 @@ async function bootstrap() {
         forbidNonWhitelisted: true,
       }),
     );
-    
 
-    // app.enableCors(); // enable when the Next.js frontend starts calling the API
+    app.enableCors({
+      origin: process.env.CORS_ORIGIN ?? "http://localhost:3000",
+      methods: ['GET', 'POST', 'PATCH', 'DELETE']
+    }); 
 
-    const port = process.env.PORT ?? 3000;
+    const port = process.env.PORT ?? 3002;
     await app.listen(port);
     logger.log(`The app is running on: ${port}`);
   } catch (error) {
