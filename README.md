@@ -115,7 +115,7 @@ yarn start:prod
 
 ## API Reference
 
-Base URL: `http://localhost:3000/api`
+Base URL: `http://localhost:3002/api`
 
 | Method | Endpoint      | Description           | Success |
 | ------ | ------------- | --------------------- | ------- |
@@ -128,7 +128,7 @@ Base URL: `http://localhost:3000/api`
 ### Create a task
 
 ```bash
-curl -X POST http://localhost:3000/api/tasks \
+curl -X POST http://localhost:3002/api/tasks \
   -H "Content-Type: application/json" \
   -d '{"title":"Implement CRUD","description":"Tasks module","status":"IN_PROGRESS"}'
 ```
@@ -199,5 +199,5 @@ yarn test:cov
 
 - No authentication yet — tasks are not user-scoped
 - Duplicate `title` on create/update surfaces as a `500` (Prisma `P2002`); a `409 Conflict` handler is planned
-- CORS is not enabled yet — will be required before the Next.js frontend calls this API
+- CORS is enabled for `http://localhost:3000` (configurable via `CORS_ORIGIN`)
 - Pomodoro timer and focus-session tracking are not yet modeled
